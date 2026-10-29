@@ -32,14 +32,14 @@
 </head>
 <body class="bg-blush font-sans text-textdark antialiased selection:bg-softpink selection:text-white">
 
-    <!-- Announcement Bar -->
-    <div class="bg-deeprose text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center px-6">
-        <span>✨ Free Shipping on Orders Above ₹499 | Handcrafted with Love 🌷🎀</span>
-        <button onclick="openAdmin()" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-xs transition">⚙️ Admin Panel</button>
+    <!-- Top Announcement Bar -->
+    <div class="bg-deeprose text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center px-4 sm:px-8 shadow-inner">
+        <span class="truncate">✨ Free Shipping on Orders Above ₹499 | Handcrafted with Love 🌷🎀</span>
+        <button onclick="openAdmin()" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-xs transition font-semibold ml-2 whitespace-nowrap cursor-pointer">⚙️ Admin Panel</button>
     </div>
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-softpink/30 shadow-sm">
+    <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-softpink/30 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center space-x-2">
                 <span class="text-2xl sm:text-3xl font-serif font-bold text-deeprose tracking-tight">GulDhaaga</span>
@@ -53,8 +53,8 @@
             </nav>
 
             <div class="flex items-center space-x-4">
-                <button onclick="toggleCart()" class="relative p-2 rounded-full hover:bg-softpink/20 transition text-deeprose">
-                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-white shadow-sm hover:bg-softpink/20 transition text-deeprose cursor-pointer">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
                     <span id="cart-count" class="absolute -top-1 -right-1 bg-deeprose text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
@@ -65,7 +65,7 @@
     <section class="relative bg-gradient-to-b from-blush via-cream to-blush py-16 sm:py-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6 text-center md:text-left">
-                <span class="inline-block bg-softpink/30 text-deeprose text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest">🎀 Pinterest Aesthetic Vibes</span>
+                <span class="inline-block bg-softpink/30 text-deeprose text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">🎀 Pinterest Aesthetic Vibes</span>
                 <h1 class="text-4xl sm:text-6xl font-serif font-bold text-deeprose leading-tight">
                     Cute Handmade <br><span class="italic font-normal text-textdark">Crochet Magic</span> 🌷
                 </h1>
@@ -76,7 +76,7 @@
                     <a href="#shop" class="bg-deeprose text-white px-8 py-3.5 rounded-full font-medium shadow-lg shadow-deeprose/30 hover:bg-opacity-90 transition text-center">
                         Explore Collection ✨
                     </a>
-                    <button onclick="openAdmin()" class="border-2 border-deeprose text-deeprose px-8 py-3.5 rounded-full font-medium hover:bg-deeprose hover:text-white transition text-center">
+                    <button onclick="openAdmin()" class="border-2 border-deeprose text-deeprose px-8 py-3.5 rounded-full font-medium hover:bg-deeprose hover:text-white transition text-center cursor-pointer">
                         Add New Product ⚙️
                     </button>
                 </div>
@@ -95,19 +95,19 @@
             <p class="text-gray-500 text-sm">Pick your aesthetic mood</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div onclick="filterCategory('all')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20">
+            <div onclick="filterCategory('all')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20 hover:border-deeprose">
                 <div class="w-16 h-16 mx-auto mb-4 bg-blush rounded-full flex items-center justify-center text-deeprose text-2xl group-hover:scale-110 transition">🌷</div>
                 <h3 class="font-semibold text-textdark">All Items</h3>
             </div>
-            <div onclick="filterCategory('Bouquet')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20">
+            <div onclick="filterCategory('Bouquet')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20 hover:border-deeprose">
                 <div class="w-16 h-16 mx-auto mb-4 bg-blush rounded-full flex items-center justify-center text-deeprose text-2xl group-hover:scale-110 transition">💐</div>
                 <h3 class="font-semibold text-textdark">Bouquets</h3>
             </div>
-            <div onclick="filterCategory('Keychain')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20">
+            <div onclick="filterCategory('Keychain')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20 hover:border-deeprose">
                 <div class="w-16 h-16 mx-auto mb-4 bg-blush rounded-full flex items-center justify-center text-deeprose text-2xl group-hover:scale-110 transition">🎀</div>
                 <h3 class="font-semibold text-textdark">Keychains</h3>
             </div>
-            <div onclick="filterCategory('Accessories')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20">
+            <div onclick="filterCategory('Accessories')" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-softpink/20 hover:border-deeprose">
                 <div class="w-16 h-16 mx-auto mb-4 bg-blush rounded-full flex items-center justify-center text-deeprose text-2xl group-hover:scale-110 transition">👒</div>
                 <h3 class="font-semibold text-textdark">Accessories</h3>
             </div>
@@ -126,10 +126,10 @@
     <!-- Admin Panel Modal -->
     <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeAdmin()"></div>
-        <div class="bg-cream rounded-3xl max-w-xl w-full p-8 relative z-10 shadow-2xl border border-softpink/30 space-y-6 max-h-[90vh] overflow-y-auto">
+        <div class="bg-cream rounded-3xl max-w-xl w-full p-6 sm:p-8 relative z-10 shadow-2xl border border-softpink/30 space-y-6 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-4 border-softpink/30">
                 <h3 class="text-2xl font-serif font-bold text-deeprose">⚙️ Admin Product Manager</h3>
-                <button onclick="closeAdmin()" class="text-gray-400 hover:text-textdark text-xl">&times;</button>
+                <button onclick="closeAdmin()" class="text-gray-400 hover:text-textdark text-2xl font-bold cursor-pointer">&times;</button>
             </div>
             
             <!-- Add Product Form -->
@@ -154,10 +154,10 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Image URL (Paste direct image link)</label>
+                    <label class="block text-sm font-medium mb-1">Image URL (Direct link)</label>
                     <input type="url" id="p-image" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="https://images.unsplash.com/...">
                 </div>
-                <button type="submit" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition">
+                <button type="submit" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition cursor-pointer">
                     Publish Product ✨
                 </button>
             </form>
@@ -167,9 +167,7 @@
             <!-- Manage / Delete Products -->
             <div>
                 <h4 class="font-semibold text-textdark mb-3">Existing Products (Manage)</h4>
-                <div id="admin-product-list" class="space-y-2 max-h-48 overflow-y-auto">
-                    <!-- Loaded via JS -->
-                </div>
+                <div id="admin-product-list" class="space-y-2 max-h-48 overflow-y-auto pr-1"></div>
             </div>
         </div>
     </div>
@@ -183,7 +181,7 @@
                     <h2 class="text-xl font-serif font-bold text-deeprose flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping"></i> Your Shopping Bag
                     </h2>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-textdark p-2 text-xl">&times;</button>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-textdark p-2 text-xl font-bold cursor-pointer">&times;</button>
                 </div>
                 <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-softpink/20"></div>
                 <div class="p-6 border-t border-softpink/30 bg-blush space-y-4">
@@ -191,7 +189,7 @@
                         <span>Total:</span>
                         <span id="cart-total" class="text-deeprose">₹0</span>
                     </div>
-                    <button onclick="openCheckout()" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition">
+                    <button onclick="openCheckout()" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition cursor-pointer">
                         Proceed to Checkout 🛍️
                     </button>
                 </div>
@@ -205,7 +203,7 @@
         <div class="bg-cream rounded-3xl max-w-lg w-full p-8 relative z-10 shadow-2xl border border-softpink/30 space-y-6">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-serif font-bold text-deeprose">Complete Order 💌</h3>
-                <button onclick="closeCheckout()" class="text-gray-400 hover:text-textdark text-xl">&times;</button>
+                <button onclick="closeCheckout()" class="text-gray-400 hover:text-textdark text-xl font-bold cursor-pointer">&times;</button>
             </div>
             <form id="order-form" onsubmit="submitOrder(event)" class="space-y-4">
                 <div>
@@ -216,3 +214,210 @@
                     <label class="block text-sm font-medium mb-1">Phone Number</label>
                     <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="e.g. 9876543210">
                 </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Delivery Address</label>
+                    <textarea required rows="3" class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="House no, Street, City, Pincode"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition cursor-pointer">
+                    Place Order via WhatsApp / Direct ✨
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-cream border-t border-softpink/30 py-12 mt-16 text-center text-sm text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <span class="text-2xl font-serif font-bold text-deeprose">GulDhaaga</span>
+            <p>Handmade Crochet Artistry crafted with warmth & pink aesthetics 🌷🎀</p>
+            <p>&copy; 2026 GulDhaaga Crochet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const defaultProducts = [
+            { id: 1, name: "Pastel Tulip Bouquet", price: 699, category: "Bouquet", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=400" },
+            { id: 2, name: "Pink Bow Keychain", price: 199, category: "Keychain", image: "https://images.unsplash.com/photo-1582582494705-f829b6bfafc8?auto=format&fit=crop&q=80&w=400" },
+            { id: 3, name: "Daisy Sunflower Bundle", price: 599, category: "Bouquet", image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=400" },
+            { id: 4, name: "Cozy Crochet Hair Bow", price: 249, category: "Accessories", image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=400" }
+        ];
+
+        let products = JSON.parse(localStorage.getItem('guldhaaga_products')) || defaultProducts;
+        let cart = [];
+
+        function saveProducts() {
+            localStorage.setItem('guldhaaga_products', JSON.stringify(products));
+        }
+
+        function renderProducts(filteredProducts = products) {
+            const grid = document.getElementById('product-grid');
+            document.getElementById('product-count').innerText = `Showing ${filteredProducts.length} items`;
+            grid.innerHTML = filteredProducts.map(p => `
+                <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition duration-300 border border-softpink/20 flex flex-col justify-between group">
+                    <div>
+                        <div class="overflow-hidden rounded-2xl mb-4 relative aspect-square bg-blush">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-deeprose text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">${p.category}</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-textdark mb-1">${p.name}</h3>
+                        <p class="text-deeprose font-semibold text-lg mb-4">₹${p.price}</p>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full bg-blush text-deeprose hover:bg-deeprose hover:text-white py-2.5 rounded-full font-medium transition duration-300 flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-plus text-xs"></i> Add to Bag
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminList() {
+            const list = document.getElementById('admin-product-list');
+            list.innerHTML = products.map(p => `
+                <div class="flex items-center justify-between bg-blush/50 p-3 rounded-xl border border-softpink/20 text-sm">
+                    <div class="flex items-center gap-3">
+                        <img src="${p.image}" class="w-10 h-10 rounded-lg object-cover">
+                        <div>
+                            <p class="font-semibold text-textdark">${p.name}</p>
+                            <p class="text-xs text-gray-500">₹${p.price} | ${p.category}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteProduct(${p.id})" class="text-red-500 hover:text-red-700 px-3 py-1.5 text-xs font-semibold bg-white rounded-lg shadow-sm cursor-pointer">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(category) {
+            if(category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        function openAdmin() {
+            renderAdminList();
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdmin() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function addNewProduct(e) {
+            e.preventDefault();
+            const name = document.getElementById('p-name').value;
+            const price = Number(document.getElementById('p-price').value);
+            const category = document.getElementById('p-category').value;
+            const image = document.getElementById('p-image').value;
+
+            const newProduct = {
+                id: Date.now(),
+                name,
+                price,
+                category,
+                image
+            };
+
+            products.push(newProduct);
+            saveProducts();
+            renderProducts();
+            renderAdminList();
+            document.getElementById('add-product-form').reset();
+            alert('Product successfully published! 🎉🌷');
+        }
+
+        function deleteProduct(id) {
+            if(confirm('Are you sure you want to delete this product?')) {
+                products = products.filter(p => p.id !== id);
+                saveProducts();
+                renderProducts();
+                renderAdminList();
+            }
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if(existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = count;
+
+            const container = document.getElementById('cart-items');
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 py-8">Your bag is empty 🧶</p>`;
+                document.getElementById('cart-total').innerText = '₹0';
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="py-4 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="${item.image}" class="w-14 h-14 rounded-xl object-cover">
+                        <div>
+                            <h4 class="font-semibold text-sm text-textdark">${item.name}</h4>
+                            <p class="text-xs text-gray-500">₹${item.price} × ${item.qty}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 bg-white rounded-full shadow-sm text-xs font-bold cursor-pointer">-</button>
+                        <span class="text-sm font-semibold">${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)" class="w-7 h-7 bg-white rounded-full shadow-sm text-xs font-bold cursor-pointer">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-total').innerText = `₹${total}`;
+        }
+
+        function changeQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if(item) {
+                item.qty += delta;
+                if(item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function openCheckout() {
+            if(cart.length === 0) {
+                alert('Pehle cart mein kuch add toh karo bhai! 😊');
+                return;
+            }
+            toggleCart();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            alert('Yay! Order successfully placed! 🎀🌷');
+            cart = [];
+            updateCartUI();
+            closeCheckout();
+        }
+
+        // Initial render
+        renderProducts();
+    </script>
+</body>
+</html>
