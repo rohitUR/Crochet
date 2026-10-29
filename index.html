@@ -6,7 +6,7 @@
     <title>GulDhaaga | Handmade Crochet Aesthetic</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display & Poppins -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,28 +33,25 @@
 <body class="bg-blush font-sans text-textdark antialiased selection:bg-softpink selection:text-white">
 
     <!-- Announcement Bar -->
-    <div class="bg-deeprose text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
-        ✨ Free Shipping on Orders Above ₹499 | Handcrafted with Love 🌷🎀
+    <div class="bg-deeprose text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center px-6">
+        <span>✨ Free Shipping on Orders Above ₹499 | Handcrafted with Love 🌷🎀</span>
+        <button onclick="openAdmin()" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-xs transition">⚙️ Admin Panel</button>
     </div>
 
     <!-- Navbar -->
     <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-softpink/30 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
             <a href="#" class="flex items-center space-x-2">
                 <span class="text-2xl sm:text-3xl font-serif font-bold text-deeprose tracking-tight">GulDhaaga</span>
                 <span class="text-xs bg-softpink/40 text-deeprose px-2 py-0.5 rounded-full font-medium">Crochet</span>
             </a>
 
-            <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
                 <a href="#shop" class="hover:text-deeprose transition">Shop All</a>
                 <a href="#categories" class="hover:text-deeprose transition">Categories</a>
                 <a href="#about" class="hover:text-deeprose transition">Our Story</a>
-                <a href="#contact" class="hover:text-deeprose transition">Custom Order</a>
             </nav>
 
-            <!-- Actions (Cart & Mobile Menu) -->
             <div class="flex items-center space-x-4">
                 <button onclick="toggleCart()" class="relative p-2 rounded-full hover:bg-softpink/20 transition text-deeprose">
                     <i class="fa-solid fa-bag-shopping text-xl"></i>
@@ -79,9 +76,9 @@
                     <a href="#shop" class="bg-deeprose text-white px-8 py-3.5 rounded-full font-medium shadow-lg shadow-deeprose/30 hover:bg-opacity-90 transition text-center">
                         Explore Collection ✨
                     </a>
-                    <a href="#contact" class="border-2 border-deeprose text-deeprose px-8 py-3.5 rounded-full font-medium hover:bg-deeprose hover:text-white transition text-center">
-                        Custom Order 💌
-                    </a>
+                    <button onclick="openAdmin()" class="border-2 border-deeprose text-deeprose px-8 py-3.5 rounded-full font-medium hover:bg-deeprose hover:text-white transition text-center">
+                        Add New Product ⚙️
+                    </button>
                 </div>
             </div>
             <div class="relative flex justify-center">
@@ -123,30 +120,72 @@
             <h2 class="text-3xl font-serif font-bold text-deeprose">Trending Creations</h2>
             <span id="product-count" class="text-sm text-gray-500 font-medium">Showing all items</span>
         </div>
-        
-        <!-- Product Grid -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <!-- Dynamic products injected via JS -->
-        </div>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
     </section>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeAdmin()"></div>
+        <div class="bg-cream rounded-3xl max-w-xl w-full p-8 relative z-10 shadow-2xl border border-softpink/30 space-y-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-4 border-softpink/30">
+                <h3 class="text-2xl font-serif font-bold text-deeprose">⚙️ Admin Product Manager</h3>
+                <button onclick="closeAdmin()" class="text-gray-400 hover:text-textdark text-xl">&times;</button>
+            </div>
+            
+            <!-- Add Product Form -->
+            <form id="add-product-form" onsubmit="addNewProduct(event)" class="space-y-4">
+                <h4 class="font-semibold text-textdark">Upload New Crochet Item</h4>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Product Name</label>
+                    <input type="text" id="p-name" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="e.g. Lavender Tulip Bouquet">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Price (₹)</label>
+                        <input type="number" id="p-price" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="499">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Category</label>
+                        <select id="p-category" class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white">
+                            <option value="Bouquet">Bouquet</option>
+                            <option value="Keychain">Keychain</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Image URL (Paste direct image link)</label>
+                    <input type="url" id="p-image" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="https://images.unsplash.com/...">
+                </div>
+                <button type="submit" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition">
+                    Publish Product ✨
+                </button>
+            </form>
+
+            <hr class="border-softpink/30">
+
+            <!-- Manage / Delete Products -->
+            <div>
+                <h4 class="font-semibold text-textdark mb-3">Existing Products (Manage)</h4>
+                <div id="admin-product-list" class="space-y-2 max-h-48 overflow-y-auto">
+                    <!-- Loaded via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Drawer Modal -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
         <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <div class="w-screen max-w-md bg-cream shadow-2xl flex flex-col">
-                <!-- Cart Header -->
                 <div class="p-6 border-b border-softpink/30 flex items-center justify-between bg-blush">
                     <h2 class="text-xl font-serif font-bold text-deeprose flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping"></i> Your Shopping Bag
                     </h2>
                     <button onclick="toggleCart()" class="text-gray-400 hover:text-textdark p-2 text-xl">&times;</button>
                 </div>
-                <!-- Cart Items Container -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-softpink/20">
-                    <!-- Cart items listed dynamically -->
-                </div>
-                <!-- Cart Footer -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-softpink/20"></div>
                 <div class="p-6 border-t border-softpink/30 bg-blush space-y-4">
                     <div class="flex justify-between text-lg font-bold">
                         <span>Total:</span>
@@ -177,151 +216,3 @@
                     <label class="block text-sm font-medium mb-1">Phone Number</label>
                     <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="e.g. 9876543210">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Delivery Address</label>
-                    <textarea required rows="3" class="w-full px-4 py-3 rounded-xl border border-softpink focus:outline-none focus:ring-2 focus:ring-deeprose bg-white" placeholder="House no, Street, City, Pincode"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-deeprose text-white py-3.5 rounded-full font-medium shadow-lg hover:bg-opacity-90 transition">
-                    Place Order via WhatsApp / Direct ✨
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="about" class="bg-cream border-t border-softpink/30 py-12 mt-16 text-center text-sm text-gray-500">
-        <div class="max-w-7xl mx-auto px-4 space-y-4">
-            <span class="text-2xl font-serif font-bold text-deeprose">GulDhaaga</span>
-            <p>Handmade Crochet Artistry crafted with warmth & pink aesthetics 🌷🎀</p>
-            <p>&copy; 2026 GulDhaaga Crochet. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Interactivity -->
-    <script>
-        const products = [
-            { id: 1, name: "Pastel Tulip Bouquet", price: 699, category: "Bouquet", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=400" },
-            { id: 2, name: "Pink Bow Keychain", price: 199, category: "Keychain", image: "https://images.unsplash.com/photo-1582582494705-f829b6bfafc8?auto=format&fit=crop&q=80&w=400" },
-            { id: 3, name: "Daisy Sunflower Bundle", price: 599, category: "Bouquet", image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=400" },
-            { id: 4, name: "Cozy Crochet Hair Bow", price: 249, category: "Accessories", image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=400" },
-            { id: 5, name: "Strawberry Pouch Bag", price: 499, category: "Accessories", image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=400" },
-            { id: 6, name: "Cute Bunny Keychain", price: 229, category: "Keychain", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=400" }
-        ];
-
-        let cart = [];
-
-        function renderProducts(filteredProducts = products) {
-            const grid = document.getElementById('product-grid');
-            document.getElementById('product-count').innerText = `Showing ${filteredProducts.length} items`;
-            grid.innerHTML = filteredProducts.map(p => `
-                <div class="bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition duration-300 border border-softpink/20 flex flex-col justify-between group">
-                    <div>
-                        <div class="overflow-hidden rounded-2xl mb-4 relative aspect-square bg-blush">
-                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-3 right-3 bg-white/80 backdrop-blur-md text-deeprose text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">${p.category}</span>
-                        </div>
-                        <h3 class="font-serif font-bold text-lg text-textdark mb-1">${p.name}</h3>
-                        <p class="text-deeprose font-semibold text-lg mb-4">₹${p.price}</p>
-                    </div>
-                    <button onclick="addToCart(${p.id})" class="w-full bg-blush text-deeprose hover:bg-deeprose hover:text-white py-2.5 rounded-full font-medium transition duration-300 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-plus text-xs"></i> Add to Bag
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        function filterCategory(category) {
-            if(category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
-        }
-
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            drawer.classList.toggle('hidden');
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
-            if(existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
-            updateCartUI();
-            toggleCart();
-        }
-
-        function updateCartUI() {
-            const count = cart.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cart-count').innerText = count;
-
-            const container = document.getElementById('cart-items');
-            if(cart.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-400 py-8">Your bag is empty 🧶</p>`;
-                document.getElementById('cart-total').innerText = '₹0';
-                return;
-            }
-
-            container.innerHTML = cart.map(item => `
-                py-4 flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-3">
-                        <img src="${item.image}" class="w-14 h-14 rounded-xl object-cover">
-                        <div>
-                            <h4 class="font-semibold text-sm">${item.name}</h4>
-                            <p class="text-xs text-gray-500">₹${item.price} × ${item.qty}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 bg-white rounded-full shadow-sm text-xs font-bold">-</button>
-                        <span class="text-sm font-semibold">${item.qty}</span>
-                        <button onclick="changeQty(${item.id}, 1)" class="w-7 h-7 bg-white rounded-full shadow-sm text-xs font-bold">+</button>
-                    </div>
-                </div>
-            `).join('');
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            document.getElementById('cart-total').innerText = `₹${total}`;
-        }
-
-        function changeQty(productId, delta) {
-            const item = cart.find(i => i.id === productId);
-            if(item) {
-                item.qty += delta;
-                if(item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== productId);
-                }
-            }
-            updateCartUI();
-        }
-
-        function openCheckout() {
-            if(cart.length === 0) {
-                alert('Pehle cart mein kuch add toh karo bhai! 😊');
-                return;
-            }
-            toggleCart();
-            document.getElementById('checkout-modal').classList.remove('hidden');
-        }
-
-        function closeCheckout() {
-            document.getElementById('checkout-modal').classList.add('hidden');
-        }
-
-        function submitOrder(e) {
-            e.preventDefault();
-            alert('Yay! Order successfully placed! (Demo Mode) 🎀🌷');
-            cart = [];
-            updateCartUI();
-            closeCheckout();
-        }
-
-        // Initial render
-        renderProducts();
-    </script>
-</body>
-</html>
